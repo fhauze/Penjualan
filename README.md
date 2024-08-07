@@ -32,7 +32,16 @@ Contoh Request untuk membuat order ,
     }
   ]
 }
-
+output :
+{
+	"orderId": 9,
+	"printers": [
+		"Printer Bar",
+		"Printer Dapur"
+	],
+	"totalOrderPrice": "94000.00"
+}
+=================
 Untuk Dapat Detail Order : localhost:5000/bill
 {
 	"createdAt": "Wed, 07 Aug 2024 10:23:04 GMT",
