@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: Enterkomputer API
+  version: 1.0.0
+paths:
+  /order:
+    post:
+      summary: Create a new order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tableNumber:
+                  type: string
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      productId:
+                        type: integer
+                      quantity:
+                        type: integer
+                promotions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      promotionId:
+                        type: integer
+                      quantity:
+                        type: integer
+      responses:
+        '200':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderId:
+                    type: integer
+                  totalOrderPrice:
+                    type: number
+                  printers:
+                    type: array
+                    items:
+                      type: string
+
+  /bill:
+    get:
+      summary: Get the bill for an order
+      parameters:
+        - name: orderId
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bill details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    type: object
+                  items:
+                    type: array
+                    items:
+                      type: object
+                  promotions:
+                    type: array
+                    items:
+                      type: object
+                  total:
+                    type: number

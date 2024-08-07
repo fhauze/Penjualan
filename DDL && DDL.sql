@@ -10,6 +10,8 @@ CREATE TABLE products (
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
     table_number VARCHAR(10) NOT NULL,
+    order_id INT REFERENCES orders(id) ON DELETE CASCADE,
+    promotion_id INT REFERENCES promotions(id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
